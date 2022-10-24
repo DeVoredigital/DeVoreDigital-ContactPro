@@ -54,9 +54,9 @@ namespace ContactPro.Services
 
             try
             {
-                string? host = _mailSettings.Host ?? Environment.GetEnvironmentVariable("Host");
-                int port = _mailSettings.Port !=0 ? _mailSettings.Port : int.Parse(Environment.GetEnvironmentVariable("Port")!);
-                string? password = _mailSettings.Password ?? Environment.GetEnvironmentVariable("Password"); ;
+                string? host = _mailSettings.MailHost ?? Environment.GetEnvironmentVariable("MailHost");
+                int port = _mailSettings.MailPort !=0 ? _mailSettings.MailPort : int.Parse(Environment.GetEnvironmentVariable("MailPort")!);
+                string? password = _mailSettings.MailPassword ?? Environment.GetEnvironmentVariable("MailPassword"); ;
 
                 await smtpClient.ConnectAsync(host, port, SecureSocketOptions.StartTls);
                 await smtpClient.AuthenticateAsync(emailSender, password);
